@@ -1,0 +1,14 @@
+@media(max-width: 768px;)  {
+	.nave{width: 100%!important;}
+}
+
+#owl-demo .item{
+  margin: 3px;
+}
+#owl-demo .item img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.navbar{margin-bottom: 40px;}
+.card{margin: 40px;}

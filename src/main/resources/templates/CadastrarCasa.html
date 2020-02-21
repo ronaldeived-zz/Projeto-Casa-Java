@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Cadastrar Show</title>
+
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/CasaShow.js}"></script>
+
+<link rel="icon" th:href="@{/img/rei.png}">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="fontawesome-free-5.12.0-web/css/all.css">
+
+</head>
+<body>
+	<form class="form-horizontal" method="POST" th:object="${casaM}"
+		th:action="@{/cadastro-casa}">
+
+		<div th:insert="Cabecalho"></div>
+
+		<div th:text="${mensagem}" th:if="${!#strings.isEmpty(mensagem)}"
+			class="alert alert-success"></div>
+			
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+		</div>
+
+		<div align="center">
+			<h2>Casa de Show</h2>
+		</div>
+		
+		<input type="hidden" th:field="*{idCasa}">
+
+		<div class="form-group">
+			<h3 class="col">Cadastro de Casa de Show</h3>
+			<label for="nomecs" class="col-sm-2 control-label">Nome da
+				Casa de Show *</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Casa de Show"
+					id="nomecs" th:field="*{nomecs}"
+					th:classappend="${#fields.hasErrors('nomecs')} ? is-invalid">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="endcs" class="col-sm-2 control-label">Endereço *</label>
+			<div class="col-sm-4">
+				<input type="text" class="form-control" placeholder="Endereço"
+					id="endereco" th:field="*{endereco}"
+					th:classappend="${#fields.hasErrors('endereco')} ? is-invalid">
+			</div>
+		</div>
+
+		<div class="form-group col-sm-2">
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</div>
+
+	</form>
+	<div class="form-group">
+		<div class="col">
+			<h3>Busca de Casa de Show</h3>
+			<form class="form-horizontal" action="/cadastro-casa" method="GET"
+				th:object="${filtroCasa}">
+				<div class="input-group" style="width: 500px;">
+					<input class="form-control"
+						placeholder="Digite o nome da casa de show desejada"></input> <span
+						class="input-group-btn">
+						<button type="submit" class="btn">
+							<i class="fas fa-search"></i>
+						</button>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div class="table-responsive-md">
+		<table class="table table-bordered table-striped container-fluid"
+			style="margin: 0px;">
+			<thead>
+				<tr>
+					<th class="text-center">Id</th>
+					<th class="text-left">Nome Casa de Show</th>
+					<th class="text-left">Endereço</th>
+					<th class="text-center"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="casaM : ${casas}">
+					<td class="text-center" th:text="${casaM.idCasa}"></td>
+					<td class="text-left" th:text="${casaM.nomecs}"></td>
+					<td class="text-left" th:text="${casaM.endereco}"></td>
+					<td class="text-center "><a class="btn btn-link btn-xs"
+						title="Editar" rel="tooltip" data-placement="top"
+						th:href="@{/cadastro-casa/{idCasa}(idCasa=${casaM.idCasa})}">
+							<i class="fas fa-pencil-alt"></i>
+					</a> <a class="btn btn-link btn-xs"
+						th:href="@{/cadastro-casa/delete/{idCasa}(idCasa=${casaM.idCasa})}"
+						th:attr="data-idCasa=${casaM.idCasa} , data-nomecs=${casaM.nomecs}"
+						title="Excluir" rel="tooltip" data-placement="top"> <i
+							class="fas fa-times"></i>
+					</a></td>
+				</tr>
+				<tr>
+					<td colspan="6" th:if=${#lists.isEmpty(casas)}>Nenhuma Casa de
+						Show Cadastrada</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div layout:insert="ConfirmaExclusao"></div>
+
+
+</body>
+
+</html>

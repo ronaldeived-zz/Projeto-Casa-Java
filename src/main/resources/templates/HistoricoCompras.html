@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:th="http:thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Historico Compras</title>
+<link rel="icon" th:href="@{/img/rei.png}">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="fontawesome-free-5.12.0-web/css/all.css" />
+</head>
+<body>
+<form action="/historico-de-compras" th:object="${historicoM}" class="form-horizontal" method="GET">
+
+	<div th:insert="Cabecalho"></div>
+	<div align="center">
+		<h2>Historico de Compras</h2>
+	</div>
+	
+	<div align="center"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm">
+				<img alt="" src="img/ticket.png" height="200rem" width="200re;">
+			</div>
+			<div class="card" style="width: 18rem;">
+		
+			<h5 class="card-title"><strong>${enventoM.nomeEvento}</strong></h5>
+		
+		<ul class="list-group list-group-flush">
+			<li class="list-group-item" >${eventoM.dataEvento}</li>
+			<li class="list-group-item" >${eventoM.casaM.nomecs}</li>
+			<li class="list-group-item" >${eventoM.casaM.endereco}</li>
+		</ul>
+		</div>
+	</div>
+	</div>
+
+</form>
+</body>
+</html>

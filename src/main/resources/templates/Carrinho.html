@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+
+<link rel="icon" th:href="@{/img/rei.png}">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="fontawesome-free-5.12.0-web/css/all.css" />
+</head>
+
+
+	<header th:insert="Cabecalho"></header>
+	
+	
+<form th:action="@{/historico-de-compras}" th:object="${carrinhoM}" method="POST"
+	th:if="${!#lists.isEmpty(carrinhos)}">
+	<div align="center">
+	<div class="card" style="width: 18rem;">
+		<div class="card-title">
+			<h5 class="card-body" >Evento</h5>
+			<div>
+			Evento: <h5 class="list-group-item" th:text="${carrinhoM.eventoM.nomeEvento}"></h5>
+			Data: <h5 class="list-group-item" th:text="${carrinhoM.eventoM.dtEvento}"></h5>
+			Casa de Show: <h5 class="list-group-item" th:text="${carrinhoM.eventoM.casaM.nomecs}"></h5>
+			Endereço:  <h5 class="list-group-item" th:text="${carrinhoM.eventoM.casaM.endereco}"></h5>
+			Valor: <h5 class="list-group-item" th:text="${carrinhoM.eventoM.valorIngresso}"></h5>
+			Quantidade: <input type="text">
+			</div>
+		</div>
+		
+		<div class="card-body">
+			<a href="#" class="btn btn-secondary">Cancelar</a>
+			<a th:href="@{/historico-de-compras/{idCarrinho}(idCarrinho=${carrinhoM.idCarrinho})}" class="btn btn-success">Comprar</a> 
+		</div>
+	</div>
+	</div>
+
+</form>
+
+<div class="card" align="center" th:if="${#lists.isEmpty(carrinhos)}">
+	<h5>Escolha algum evento para colocar no carrinho</h5>
+</div>
+
+
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/Evento.js}"></script>
+
+</html>

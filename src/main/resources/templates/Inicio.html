@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:th="http:thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Inicio</title>
+<link rel="icon" th:href="@{/img/rei.png}">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" href="fontawesome-free-5.12.0-web/css/all.css"/>
+</head>
+<body>
+
+<form class="form-horizontal" method="POST" th:object="${inicioM}"
+		th:action="@{/inicio}">
+
+	<div th:insert="Cabecalho"></div>
+
+	<div align="center">
+		<h2>Bem Vindo User</h2>
+	</div>
+
+
+</form>
+</body>
+
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+</html>
