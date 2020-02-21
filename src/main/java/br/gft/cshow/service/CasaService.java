@@ -20,12 +20,6 @@ public class CasaService {
 		casas.save(casaM);
 	}
 	
-	public List<CasaM> filtrar(CasaFilter filtroCasa){
-		String nomecs = filtroCasa.getNomecs() == null ? "" : filtroCasa.getNomecs();
-		return casas.findByNomecsContaining(nomecs);
-		
-	}
-	
 	public void excluir(Long idCasa) {
 		casas.deleteById(idCasa);
 	}

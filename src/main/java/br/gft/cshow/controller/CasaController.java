@@ -51,14 +51,7 @@ public class CasaController {
 		mv.addObject("casas", listaCasa);
 		return mv;
 	}
-	
-	@RequestMapping
-	public ModelAndView pesquisar(@ModelAttribute ("filtroCasa") CasaFilter filtroCasa) {
-		List<CasaM> listaCasa = casaService.filtrar(filtroCasa);
-		ModelAndView mv = new ModelAndView(CASA_VIEW);
-		mv.addObject("casas", listaCasa);
-		return mv;
-	}
+
 	
 	@GetMapping("{idCasa}")
 	public ModelAndView edicao (@PathVariable ("idCasa") CasaM casaM) {

@@ -53,6 +53,7 @@
 			<div class="col-sm-4">
 				<input type="text" class="form-control" placeholder="Evento"
 					id="nomeEvento" th:field="*{nomeEvento}"
+
 					th:classappend="${#fields.hasErrors('nomeEvento')} ? is-invalid">
 			</div>
 		</div>
@@ -71,7 +72,7 @@
 			<label for="valorIngresso" class="col-sm-3 control-label">Valor
 				do ingresso*</label>
 			<div class="col-sm-4">
-				<input type="text" class="form-control js-currency" placeholder="100,00"
+				<input type="text" class="form-control js-currency" placeholder="100.00"
 					id="valorIngresso" th:field="*{valorIngresso}"
 					th:classappend="${#fields.hasErrors('valorIngresso')} ? is-invalid">
 			</div>

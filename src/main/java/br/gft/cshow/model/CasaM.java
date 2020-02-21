@@ -13,7 +13,6 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 
-
 @Entity
 public class CasaM {
 	
@@ -29,8 +28,7 @@ public class CasaM {
 	@Size(max = 60, message = "Nome da Casa de show não pode conter mais que 60 caracteres")
 	private String nomecs;
 	
-	@OneToMany(mappedBy = "casaM" , cascade = CascadeType.ALL)//, orphanRemoval=true
-	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
+	@OneToMany(mappedBy = "casaM" , cascade = CascadeType.ALL)
 	private List<EventoM> eventosM;
 
 	
